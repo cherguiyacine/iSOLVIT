@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:iSOLVIT/GetStarted.dart';
+
 class LunchPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -21,7 +23,7 @@ class LunchPageState extends State<LunchPage> {
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
-          return null; //FirstPage();
+          return GetStarted();
         }),
       );
     });
@@ -34,12 +36,16 @@ class LunchPageState extends State<LunchPage> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Color(0xff329cef),
-      body: Center(
-        child: Image.asset(
-          "images/start.PNG",
-          width: width,
-          height: height,
-        ),
+      body: new Stack(
+        children: <Widget>[
+          new Container(
+            decoration: new BoxDecoration(
+                image: new DecorationImage(
+              image: new AssetImage("images/start1.PNG"),
+              fit: BoxFit.fill,
+            )),
+          ),
+        ],
       ),
     );
   }
