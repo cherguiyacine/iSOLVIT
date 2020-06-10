@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iSOLVIT/AccueilPage.dart';
 import 'package:iSOLVIT/GetStarted.dart';
 
 import 'LunchPage.dart';
@@ -12,7 +13,7 @@ void main() {
   runApp(
     new MaterialApp(
       title: "iSOLVIT",
-      home: new LunchPage(),
+      home: new AccueilPage(),
     ),
   );
 }
