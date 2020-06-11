@@ -1,7 +1,10 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertagselector/fluttertagselector.dart';
 import 'package:fluttertagselector/tag_class.dart';
+
+import 'ChartWidget.dart';
 
 class AccueilPage extends StatefulWidget {
   @override
@@ -10,6 +13,8 @@ class AccueilPage extends StatefulWidget {
     return AccueilPageState();
   }
 }
+
+int touchedIndex;
 
 class AccueilPageState extends State<AccueilPage> {
   initState() {
@@ -28,6 +33,7 @@ class AccueilPageState extends State<AccueilPage> {
   final List<Tags> tagList = [
     Tags("Signaler Cas", Icons.add),
   ];
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -41,184 +47,187 @@ class AccueilPageState extends State<AccueilPage> {
             color: Color(0xffEBECF0),
             child: Column(
               children: <Widget>[
-                CostumBar(height, width),
-                SizedBox(
-                  height: 40.0,
-                  //child: const Card(child: Text('Hello World!')),
-                ),
-                Row(
-                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      width: 0.5 * width,
-                      height: 70,
-                      child: Column(
-                        children: <Widget>[
-                          Align(
-                            alignment: Alignment(-0.8, -0.5),
-                            child: Text(
-                              'Accueil',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                // fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8.0,
-                            //child: const Card(child: Text('Hello World!')),
-                          ),
-                          Align(
-                            alignment: Alignment(-0.85, -0.7),
-                            child: Text(
-                              'Il y\'a 49 cas',
-                              style: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 0.5 * width,
-                      color: Colors.blueGrey,
-                      height: 70,
-                      child:
-                          TagGenrator(tagList: tagList, fillRandomColor: true),
-                    ),
-                  ],
-                ),
-                Container(
-                  child: Align(
-                    child: Container(
-                      color: Colors.white,
-                      height: 90,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          SizedBox(
-                            width: 5.0,
-                            //child: const Card(child: Text('Hello World!')),
-                          ),
-                          InkWell(
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  height: 60,
-                                  child: Image(
-                                    // fit: BoxFit.fill,
-                                    image: AssetImage('images/message1.PNG'),
-                                    width: 70.0,
-                                    height: 70.0,
-                                  ),
-                                ),
-                                Text(
-                                  'Les cas',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              print("Les cas");
-                            },
-                          ),
-                          InkWell(
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  height: 60,
-                                  child: Image(
-                                    // fit: BoxFit.fill,
-                                    image:
-                                        AssetImage('images/statistique1.PNG'),
-                                    width: 70.0,
-                                    height: 70.0,
-                                  ),
-                                ),
-                                Text(
-                                  'Statistiques',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              print('Statistiques');
-                            },
-                          ),
-                          InkWell(
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  height: 60,
-                                  child: Image(
-                                    // fit: BoxFit.fill,
-                                    image: AssetImage('images/setting1.PNG'),
-                                    width: 70.0,
-                                    height: 70.0,
-                                  ),
-                                ),
-                                Text(
-                                  'Paramétres',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              print("Paramétres");
-                            },
-                          ),
-                          InkWell(
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  height: 60,
-                                  child: Image(
-                                    // fit: BoxFit.fill,
-                                    image: AssetImage('images/alert1.PNG'),
-                                    width: 70.0,
-                                    height: 70.0,
-                                  ),
-                                ),
-                                Text(
-                                  'Notifications',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    // fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              print("Notifications");
-                            },
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                            //child: const Card(child: Text('Hello World!')),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: ListView(
                     scrollDirection: Axis.vertical,
                     children: <Widget>[
+                      CostumBar(height, width),
+                      SizedBox(
+                        height: 40.0,
+                        //child: const Card(child: Text('Hello World!')),
+                      ),
+                      Row(
+                        //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            width: 0.5 * width,
+                            height: 70,
+                            child: Column(
+                              children: <Widget>[
+                                Align(
+                                  alignment: Alignment(-0.8, -0.5),
+                                  child: Text(
+                                    'Accueil',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 25,
+                                      // fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 8.0,
+                                  //child: const Card(child: Text('Hello World!')),
+                                ),
+                                Align(
+                                  alignment: Alignment(-0.85, -0.7),
+                                  child: Text(
+                                    'Il y\'a 49 cas',
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 0.5 * width,
+                            color: Colors.blueGrey,
+                            height: 70,
+                            child: TagGenrator(
+                                tagList: tagList, fillRandomColor: true),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        child: Align(
+                          child: Container(
+                            color: Colors.white,
+                            height: 90,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 5.0,
+                                  //child: const Card(child: Text('Hello World!')),
+                                ),
+                                InkWell(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 60,
+                                        child: Image(
+                                          // fit: BoxFit.fill,
+                                          image:
+                                              AssetImage('images/message1.PNG'),
+                                          width: 70.0,
+                                          height: 70.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Les cas',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    print("Les cas");
+                                  },
+                                ),
+                                InkWell(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 60,
+                                        child: Image(
+                                          // fit: BoxFit.fill,
+                                          image: AssetImage(
+                                              'images/statistique1.PNG'),
+                                          width: 70.0,
+                                          height: 70.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Statistiques',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    print('Statistiques');
+                                  },
+                                ),
+                                InkWell(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 60,
+                                        child: Image(
+                                          // fit: BoxFit.fill,
+                                          image:
+                                              AssetImage('images/setting1.PNG'),
+                                          width: 70.0,
+                                          height: 70.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Paramétres',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    print("Paramétres");
+                                  },
+                                ),
+                                InkWell(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 60,
+                                        child: Image(
+                                          // fit: BoxFit.fill,
+                                          image:
+                                              AssetImage('images/alert1.PNG'),
+                                          width: 70.0,
+                                          height: 70.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Notifications',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 15,
+                                          // fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    print("Notifications");
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 10.0,
+                                  //child: const Card(child: Text('Hello World!')),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                       SizedBox(
                         height: 20.0,
                         //child: const Card(child: Text('Hello World!')),
@@ -282,9 +291,10 @@ class AccueilPageState extends State<AccueilPage> {
                       ),
                       Center(
                         child: Container(
-                          color: Colors.blue,
-                          height: 100,
-                          width: 100,
+                          //  color: Colors.blue,
+                          height: 300,
+                          width: 320,
+                          child: PieChartSample2(),
                         ),
                       )
                     ],
