@@ -17,11 +17,7 @@ class AccueilPageState extends State<AccueilPage> {
   }
 
   final List<Tags> tagList = [
-    Tags("Label 1", Icons.map),
-    Tags("Label 2", Icons.headset),
-    Tags("Label 3", Icons.info),
-    Tags("Label 4", Icons.cake),
-    Tags("Label 5", Icons.ac_unit),
+    Tags("Signaler Cas", Icons.add),
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,17 +27,154 @@ class AccueilPageState extends State<AccueilPage> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.white10,
+          // backgroundColor: Colors.white,
           body: Container(
             color: Color(0xffEBECF0),
             child: Column(
               children: <Widget>[
                 CostumBar(height, width),
                 SizedBox(
-                  height: 30.0,
-                  child: const Card(child: Text('Hello World!')),
+                  height: 40.0,
+                  //child: const Card(child: Text('Hello World!')),
                 ),
-                TagGenrator(tagList: tagList, fillRandomColor: true),
+                Row(
+                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      width: 0.5 * width,
+                      height: 70,
+                      child: Column(
+                        children: <Widget>[
+                          Align(
+                            alignment: Alignment(-0.8, -0.5),
+                            child: Text(
+                              'Accueil',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8.0,
+                            //child: const Card(child: Text('Hello World!')),
+                          ),
+                          Align(
+                            alignment: Alignment(-0.85, -0.7),
+                            child: Text(
+                              'Il y\'a 49 cas',
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 0.5 * width,
+                      color: Colors.blueGrey,
+                      height: 70,
+                      child:
+                          TagGenrator(tagList: tagList, fillRandomColor: true),
+                    ),
+                  ],
+                ),
+                Container(
+                  child: Align(
+                    child: Container(
+                      color: Colors.white,
+                      height: 90,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          InkWell(
+                            child: Column(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.message,
+                                  size: 60,
+                                  color: Colors.grey.shade400,
+                                ),
+                                Text(
+                                  'Les cas',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onTap: () {
+                              print("hey2 ");
+                            },
+                          ),
+                          InkWell(
+                            child: Column(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.dvr,
+                                  size: 60,
+                                  color: Colors.grey.shade400,
+                                ),
+                                Text(
+                                  'Statistiques',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onTap: () {},
+                          ),
+                          InkWell(
+                            child: Column(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.settings,
+                                  size: 60,
+                                  color: Colors.grey.shade400,
+                                ),
+                                Text(
+                                  'Paramétres',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onTap: () {},
+                          ),
+                          InkWell(
+                            child: Column(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.notification_important,
+                                  size: 60,
+                                  color: Colors.grey.shade400,
+                                ),
+                                Text(
+                                  'Notifications',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                    // fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
