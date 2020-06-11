@@ -16,6 +16,15 @@ class AccueilPageState extends State<AccueilPage> {
     super.initState();
   }
 
+  int _current = 0;
+  List<String> imgList = [
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+  ];
   final List<Tags> tagList = [
     Tags("Signaler Cas", Icons.add),
   ];
@@ -91,13 +100,21 @@ class AccueilPageState extends State<AccueilPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
+                          SizedBox(
+                            width: 5.0,
+                            //child: const Card(child: Text('Hello World!')),
+                          ),
                           InkWell(
                             child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.message,
-                                  size: 60,
-                                  color: Colors.grey.shade400,
+                                Container(
+                                  height: 60,
+                                  child: Image(
+                                    // fit: BoxFit.fill,
+                                    image: AssetImage('images/message1.PNG'),
+                                    width: 70.0,
+                                    height: 70.0,
+                                  ),
                                 ),
                                 Text(
                                   'Les cas',
@@ -109,16 +126,21 @@ class AccueilPageState extends State<AccueilPage> {
                               ],
                             ),
                             onTap: () {
-                              print("hey2 ");
+                              print("Les cas");
                             },
                           ),
                           InkWell(
                             child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.dvr,
-                                  size: 60,
-                                  color: Colors.grey.shade400,
+                                Container(
+                                  height: 60,
+                                  child: Image(
+                                    // fit: BoxFit.fill,
+                                    image:
+                                        AssetImage('images/statistique1.PNG'),
+                                    width: 70.0,
+                                    height: 70.0,
+                                  ),
                                 ),
                                 Text(
                                   'Statistiques',
@@ -129,15 +151,21 @@ class AccueilPageState extends State<AccueilPage> {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              print('Statistiques');
+                            },
                           ),
                           InkWell(
                             child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.settings,
-                                  size: 60,
-                                  color: Colors.grey.shade400,
+                                Container(
+                                  height: 60,
+                                  child: Image(
+                                    // fit: BoxFit.fill,
+                                    image: AssetImage('images/setting1.PNG'),
+                                    width: 70.0,
+                                    height: 70.0,
+                                  ),
                                 ),
                                 Text(
                                   'Paramétres',
@@ -148,15 +176,21 @@ class AccueilPageState extends State<AccueilPage> {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              print("Paramétres");
+                            },
                           ),
                           InkWell(
                             child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.notification_important,
-                                  size: 60,
-                                  color: Colors.grey.shade400,
+                                Container(
+                                  height: 60,
+                                  child: Image(
+                                    // fit: BoxFit.fill,
+                                    image: AssetImage('images/alert1.PNG'),
+                                    width: 70.0,
+                                    height: 70.0,
+                                  ),
                                 ),
                                 Text(
                                   'Notifications',
@@ -168,11 +202,85 @@ class AccueilPageState extends State<AccueilPage> {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              print("Notifications");
+                            },
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                            //child: const Card(child: Text('Hello World!')),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                ),
+                Expanded(
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20.0,
+                        //child: const Card(child: Text('Hello World!')),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            '  Les cas',
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          InkWell(
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'Voir plus >  ',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(0.5),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onTap: () {
+                              print("Voir plus");
+                            },
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 250.0,
+                        // color: Colors.black,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          // padding: const EdgeInsets.all(10),
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              child: Image(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  imgList[index],
+                                ),
+                                width: 150.0,
+                                height: 230.0,
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  _current = index;
+                                });
+                                print(index);
+                              },
+                            );
+                          },
+                          itemCount: imgList.length,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
