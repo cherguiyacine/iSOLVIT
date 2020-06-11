@@ -280,6 +280,13 @@ class AccueilPageState extends State<AccueilPage> {
                           itemCount: imgList.length,
                         ),
                       ),
+                      Center(
+                        child: Container(
+                          color: Colors.blue,
+                          height: 100,
+                          width: 100,
+                        ),
+                      )
                     ],
                   ),
                 ),
