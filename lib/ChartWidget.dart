@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+int cpt;
+
 class PieChartSample2 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PieChart2State();
@@ -20,30 +22,36 @@ class PieChart2State extends State {
             const SizedBox(
               height: 18,
             ),
-            Expanded(
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: PieChart(
-                  PieChartData(
-                      pieTouchData:
-                          PieTouchData(touchCallback: (pieTouchResponse) {
-                        setState(() {
-                          if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                              pieTouchResponse.touchInput is FlPanEnd) {
-                            touchedIndex = -1;
-                          } else {
-                            touchedIndex = pieTouchResponse.touchedSectionIndex;
-                          }
-                        });
-                      }),
-                      borderData: FlBorderData(
-                        show: false,
-                      ),
-                      sectionsSpace: 0,
-                      centerSpaceRadius: 40,
-                      sections: showingSections()),
+            InkWell(
+              child: Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: PieChart(
+                    PieChartData(
+                        pieTouchData:
+                            PieTouchData(touchCallback: (pieTouchResponse) {
+                          setState(() {
+                            if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                                pieTouchResponse.touchInput is FlPanEnd) {
+                              touchedIndex = -1;
+                            } else {
+                              touchedIndex =
+                                  pieTouchResponse.touchedSectionIndex;
+                            }
+                          });
+                        }),
+                        borderData: FlBorderData(
+                          show: false,
+                        ),
+                        sectionsSpace: 0,
+                        centerSpaceRadius: 40,
+                        sections: showingSections()),
+                  ),
                 ),
               ),
+              onTap: () {
+                print(cpt);
+              },
             ),
             Column(
               mainAxisSize: MainAxisSize.max,
@@ -53,7 +61,7 @@ class PieChart2State extends State {
                 Indicator(
                   color: Color(0xff0293ee),
                   text: 'Suspect',
-                  isSquare: true,
+                  isSquare: false,
                 ),
                 SizedBox(
                   height: 4,
@@ -61,7 +69,7 @@ class PieChart2State extends State {
                 Indicator(
                   color: Color(0xfff8b250),
                   text: 'Positif',
-                  isSquare: true,
+                  isSquare: false,
                 ),
                 SizedBox(
                   height: 4,
@@ -69,7 +77,7 @@ class PieChart2State extends State {
                 Indicator(
                   color: Color(0xff845bef),
                   text: 'Guéris',
-                  isSquare: true,
+                  isSquare: false,
                 ),
                 SizedBox(
                   height: 4,
@@ -77,7 +85,7 @@ class PieChart2State extends State {
                 Indicator(
                   color: Color(0xff13d38e),
                   text: 'Décés',
-                  isSquare: true,
+                  isSquare: false,
                 ),
                 SizedBox(
                   height: 18,
@@ -96,8 +104,8 @@ class PieChart2State extends State {
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final double fontSize = isTouched ? 25 : 16;
-      final double radius = isTouched ? 60 : 50;
+      final double fontSize = isTouched ? 22 : 14;
+      final double radius = isTouched ? 50 : 40;
       switch (i) {
         case 0:
           return PieChartSectionData(
@@ -143,6 +151,7 @@ class PieChart2State extends State {
                 fontWeight: FontWeight.bold,
                 color: const Color(0xffffffff)),
           );
+
         default:
           return null;
       }
@@ -162,7 +171,7 @@ class Indicator extends StatelessWidget {
     this.color,
     this.text,
     this.isSquare,
-    this.size = 16,
+    this.size = 12,
     this.textColor = const Color(0xff505050),
   }) : super(key: key);
 
@@ -184,7 +193,7 @@ class Indicator extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: textColor),
+              fontSize: 12, fontWeight: FontWeight.bold, color: textColor),
         )
       ],
     );

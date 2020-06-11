@@ -289,14 +289,30 @@ class AccueilPageState extends State<AccueilPage> {
                           itemCount: imgList.length,
                         ),
                       ),
-                      Center(
-                        child: Container(
-                          //  color: Colors.blue,
-                          height: 300,
-                          width: 320,
-                          child: PieChartSample2(),
-                        ),
-                      )
+                      Stack(
+                        children: <Widget>[
+                          Center(
+                            child: Container(
+                              //  color: Colors.blue,
+                              height: 200,
+                              width: width * 0.9,
+                              child: PieChartSample2(),
+                            ),
+                          ),
+                          Positioned(
+                            left: 87.0,
+                            top: 87.0,
+                            child: Text(
+                              '49 cas',
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
