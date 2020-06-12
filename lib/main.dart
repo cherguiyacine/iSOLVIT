@@ -4,6 +4,7 @@ import 'package:iSOLVIT/GetStarted.dart';
 import 'package:iSOLVIT/MenuPage.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
+import 'CasActifPage.dart';
 import 'CasGueriePage.dart';
 
 /*void main() => runApp(MaterialApp(
@@ -14,7 +15,7 @@ void main() {
   runApp(
     new MaterialApp(
       title: "iSOLVIT",
-      home: (CasGuerisPage()),
+      home: (CasActifPage()),
     ),
   );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
+import 'package:iSOLVIT/CasActifPage.dart';
 import 'package:iSOLVIT/CasDecede.dart';
 import 'dart:async';
 
@@ -147,7 +148,13 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                               pressedOpacity: 0.7,
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white,
-                              onPressed: () {}),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CasActifPage()),
+                                );
+                              }),
                         ),
                         SizedBox(
                           width: 20,

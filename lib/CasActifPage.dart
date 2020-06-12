@@ -5,45 +5,69 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'AccueilPage.dart';
 import 'SimpleTieSeriesChart.dart';
+import 'TwoLinePage.dart';
 
-class CasDecedePage extends StatefulWidget {
+class CasActifPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return CasDecedePageState();
+    return CasActifPageState();
   }
 }
 
-class CasDecedePageState extends State<CasDecedePage> {
-  List<charts.Series<Sales, int>> _seriesLineData;
-  List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
-    final data = [
-      new TimeSeriesSales(new DateTime(2020, 06, 19), 2),
-      new TimeSeriesSales(new DateTime(2020, 06, 20), 3),
-      new TimeSeriesSales(new DateTime(2020, 06, 21), 2),
-      new TimeSeriesSales(new DateTime(2020, 06, 22), 5),
-      new TimeSeriesSales(new DateTime(2020, 06, 23), 1),
-      new TimeSeriesSales(new DateTime(2020, 06, 24), 0),
-      new TimeSeriesSales(new DateTime(2020, 06, 25), 3),
-      new TimeSeriesSales(new DateTime(2020, 06, 26), 1),
-      new TimeSeriesSales(new DateTime(2020, 06, 27), 6),
-      new TimeSeriesSales(new DateTime(2020, 06, 28), 9),
+class CasActifPageState extends State<CasActifPage> {
+  List<charts.Series<TimeSeriesSales, int>> _seriesLineData;
+  static List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
+    final desktopSalesData = [
+      new TimeSeriesSales(new DateTime(2017, 9, 19), 5),
+      new TimeSeriesSales(new DateTime(2017, 9, 26), 25),
+      new TimeSeriesSales(new DateTime(2017, 10, 3), 100),
+      new TimeSeriesSales(new DateTime(2017, 10, 10), 75),
+    ];
+
+    final tableSalesData = [
+      new TimeSeriesSales(new DateTime(2017, 9, 19), 10),
+      new TimeSeriesSales(new DateTime(2017, 9, 26), 50),
+      new TimeSeriesSales(new DateTime(2017, 10, 3), 200),
+      new TimeSeriesSales(new DateTime(2017, 10, 10), 150),
+    ];
+
+    final mobileSalesData = [
+      new TimeSeriesSales(new DateTime(2017, 9, 19), 10),
+      new TimeSeriesSales(new DateTime(2017, 9, 26), 50),
+      new TimeSeriesSales(new DateTime(2017, 10, 3), 200),
+      new TimeSeriesSales(new DateTime(2017, 10, 10), 150),
     ];
 
     return [
       new charts.Series<TimeSeriesSales, DateTime>(
-        id: 'Sales',
+        id: 'Desktop',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (TimeSeriesSales sales, _) => sales.time,
         measureFn: (TimeSeriesSales sales, _) => sales.sales,
-        data: data,
-      )
+        data: desktopSalesData,
+      ),
+      new charts.Series<TimeSeriesSales, DateTime>(
+        id: 'Tablet',
+        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+        domainFn: (TimeSeriesSales sales, _) => sales.time,
+        measureFn: (TimeSeriesSales sales, _) => sales.sales,
+        data: tableSalesData,
+      ),
+      new charts.Series<TimeSeriesSales, DateTime>(
+          id: 'Mobile',
+          colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+          domainFn: (TimeSeriesSales sales, _) => sales.time,
+          measureFn: (TimeSeriesSales sales, _) => sales.sales,
+          data: mobileSalesData)
+        // Configure our custom point renderer for this series.
+        ..setAttribute(charts.rendererIdKey, 'customPoint'),
     ];
   }
 
   initState() {
     super.initState();
-    _seriesLineData = List<charts.Series<Sales, int>>();
+    _seriesLineData = List<charts.Series<TimeSeriesSales, int>>();
   }
 
   int _current = 0;
@@ -81,15 +105,14 @@ class CasDecedePageState extends State<CasDecedePage> {
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(
-                          // color: Colors.teal,
-                          width: 0.52 * width,
-                          height: 80,
+                          width: 0.5 * width,
+                          height: 90,
                           child: Column(
                             children: <Widget>[
                               Align(
                                 alignment: Alignment(-0.8, -0.5),
                                 child: Text(
-                                  'Les cas décédés',
+                                  'Les cas Actif',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -101,13 +124,13 @@ class CasDecedePageState extends State<CasDecedePage> {
                                 height: 8.0,
                                 //child: const Card(child: Text('Hello World!')),
                               ),
-                              Align(
-                                alignment: Alignment(-0.85, -0.7),
+                              Padding(
+                                padding: EdgeInsets.only(left: 2),
                                 child: Text(
-                                  'Il y\'a 3 cas décédés',
+                                  'Il y\'a 11 cas suspects et 6 cas actifs',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
-                                    fontSize: 20,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -232,8 +255,93 @@ class CasDecedePageState extends State<CasDecedePage> {
                               color: Colors.white,
                               height: 400,
                               width: width * 0.9,
-                              child:
-                                  SimpleTimeSeriesChart(_createSampleData())),
+                              child: DateTimeComboLinePointChart(
+                                  _createSampleData())),
+                        ),
+                        Center(
+                          child: Container(
+                            color: Colors.white,
+                            height: 100,
+                            width: width * 0.9,
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      height: 25,
+                                      width: 20,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          border: Border.all(
+                                              width: 3,
+                                              color: Colors.blue,
+                                              style: BorderStyle.solid)),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            new BorderRadius.circular(10.0),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Cas suspects',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      height: 25,
+                                      width: 20,
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          border: Border.all(
+                                              width: 3,
+                                              color: Colors.red,
+                                              style: BorderStyle.solid)),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            new BorderRadius.circular(10.0),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Cas positifs',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -248,10 +356,9 @@ class CasDecedePageState extends State<CasDecedePage> {
   }
 }
 
-class Sales {
-  int yearval;
-  int salesval;
-  DateTime time;
+class TimeSeriesSales {
+  final DateTime time;
+  final int sales;
 
-  Sales(this.yearval, this.salesval, this.time);
+  TimeSeriesSales(this.time, this.sales);
 }
