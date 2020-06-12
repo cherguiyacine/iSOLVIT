@@ -95,10 +95,10 @@ class AccueilPageState extends State<AccueilPage> {
                           ),
                           Container(
                             width: 0.5 * width,
-                            color: Colors.blueGrey,
+                            // color: Colors.blueGrey,
                             height: 70,
                             child: TagGenrator(
-                                tagList: tagList, fillRandomColor: true),
+                                tagList: tagList, fillRandomColor: false),
                           ),
                         ],
                       ),
