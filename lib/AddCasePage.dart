@@ -44,9 +44,14 @@ class _AddCasePageState extends State<AddCasePage> {
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(left: 10),
-                              child: Icon(
-                                Icons.keyboard_backspace,
-                                size: 30,
+                              child: InkWell(
+                                child: Icon(
+                                  Icons.keyboard_backspace,
+                                  size: 30,
+                                ),
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
                               ),
                             ),
                           ),

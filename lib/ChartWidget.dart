@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import 'GeneralStatistics.dart';
+
 int cpt;
 
 class PieChartSample2 extends StatefulWidget {
@@ -51,6 +53,11 @@ class PieChart2State extends State {
               ),
               onTap: () {
                 print(cpt);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => GeneralStatisticsPage()),
+                );
               },
             ),
             Column(

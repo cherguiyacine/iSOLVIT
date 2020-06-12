@@ -5,6 +5,8 @@ import 'dart:async';
 
 import 'package:iSOLVIT/GetStarted.dart';
 
+import 'GeneralStatistics.dart';
+
 class MenuPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -115,6 +117,11 @@ class MenuPageState extends State<MenuPage> {
                     ),
                     onTap: () {
                       print("Les cas");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GeneralStatisticsPage()),
+                      );
                     },
                   ),
                 ),
@@ -131,6 +138,11 @@ class MenuPageState extends State<MenuPage> {
                     ),
                     onTap: () {
                       print("Statistique");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GeneralStatisticsPage()),
+                      );
                     },
                   ),
                 ),

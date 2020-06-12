@@ -8,19 +8,28 @@ import 'package:iSOLVIT/GetStarted.dart';
 import 'AccueilPage.dart';
 import 'ChartWidget2.dart';
 
-class GeneralStatisticsPage extends StatefulWidget {
+class CasActifPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return GeneralStatisticsPageState();
+    return CasActifPageState();
   }
 }
 
-class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
+class CasActifPageState extends State<CasActifPage> {
   initState() {
     super.initState();
   }
 
+  int _current = 0;
+  List<String> imgList = [
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+    "images/malade1.png",
+  ];
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -53,7 +62,7 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                               Align(
                                 alignment: Alignment(-0.8, -0.5),
                                 child: Text(
-                                  'Les cas',
+                                  'Les cas guéris',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -68,7 +77,7 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                               Align(
                                 alignment: Alignment(-0.85, -0.7),
                                 child: Text(
-                                  'Il y\'a 79 cas',
+                                  'Il y\'a 20 cas',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 20,
@@ -108,10 +117,6 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                                   MaterialPageRoute(
                                       builder: (context) => AddCasePage()),
                                 );
-                                /* Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MenuPage()),
-            );*/
                               },
                             ),
                           ),
@@ -122,87 +127,61 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                       height: 20,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(top: 6),
-                          child: CupertinoButton(
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.sentiment_dissatisfied,
-                                    color: Colors.yellow[900],
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text("Actif ",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                      ))
-                                ],
+                        Text(
+                          '  Les cas',
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(0.5),
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        InkWell(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                'Voir plus >  ',
+                                style: TextStyle(
+                                  color: Colors.black.withOpacity(0.5),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
-                              padding: EdgeInsets.fromLTRB(17, 10, 17, 10),
-                              pressedOpacity: 0.7,
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
-                              onPressed: () {}),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 6),
-                          child: CupertinoButton(
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.sentiment_satisfied,
-                                    color: Colors.green[400],
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text("Guéris",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                      ))
-                                ],
-                              ),
-                              padding: EdgeInsets.fromLTRB(17, 10, 17, 10),
-                              pressedOpacity: 0.7,
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
-                              onPressed: () {}),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 6),
-                          child: CupertinoButton(
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.sentiment_very_dissatisfied,
-                                    color: Colors.red,
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text("Décès",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                      ))
-                                ],
-                              ),
-                              padding: EdgeInsets.fromLTRB(17, 10, 17, 10),
-                              pressedOpacity: 0.7,
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
-                              onPressed: () {}),
+                            ],
+                          ),
+                          onTap: () {
+                            print("Voir plus");
+                          },
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 20,
+                    Container(
+                      height: 250.0,
+                      // color: Colors.black,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        // padding: const EdgeInsets.all(10),
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            child: Image(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                imgList[index],
+                              ),
+                              width: 150.0,
+                              height: 230.0,
+                            ),
+                            onTap: () {
+                              setState(() {
+                                _current = index;
+                              });
+                              print(index);
+                            },
+                          );
+                        },
+                        itemCount: imgList.length,
+                      ),
                     ),
                     Stack(
                       children: <Widget>[

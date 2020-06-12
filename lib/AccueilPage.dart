@@ -141,6 +141,12 @@ class AccueilPageState extends State<AccueilPage> {
                                   ),
                                   onTap: () {
                                     print("Les cas");
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              GeneralStatisticsPage()),
+                                    );
                                   },
                                 ),
                                 InkWell(
@@ -267,6 +273,12 @@ class AccueilPageState extends State<AccueilPage> {
                             ),
                             onTap: () {
                               print("Voir plus");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        GeneralStatisticsPage()),
+                              );
                             },
                           ),
                         ],
