@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertagselector/fluttertagselector.dart';
 import 'package:fluttertagselector/tag_class.dart';
+import 'package:iSOLVIT/GeneralStatistics.dart';
 import 'package:iSOLVIT/MenuPage.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -84,7 +85,7 @@ class AccueilPageState extends State<AccueilPage> {
                                 Align(
                                   alignment: Alignment(-0.85, -0.7),
                                   child: Text(
-                                    'Il y\'a 49 cas',
+                                    'Il y\'a 79 cas',
                                     style: TextStyle(
                                       color: Colors.black.withOpacity(0.5),
                                       fontSize: 20,
@@ -166,6 +167,12 @@ class AccueilPageState extends State<AccueilPage> {
                                   ),
                                   onTap: () {
                                     print('Statistiques');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              GeneralStatisticsPage()),
+                                    );
                                   },
                                 ),
                                 InkWell(
@@ -305,7 +312,7 @@ class AccueilPageState extends State<AccueilPage> {
                             left: 87.0,
                             top: 87.0,
                             child: Text(
-                              '49 cas',
+                              '79 cas',
                               style: TextStyle(
                                 color: Colors.black.withOpacity(0.5),
                                 fontSize: 20,
