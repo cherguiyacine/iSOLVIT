@@ -1,38 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
-import 'dart:async';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:iSOLVIT/GetStarted.dart';
 
 import 'AccueilPage.dart';
-import 'ChartWidget2.dart';
 import 'SimpleTieSeriesChart.dart';
 
-class CasActifPage extends StatefulWidget {
+class CasDecedePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return CasActifPageState();
+    return CasDecedePageState();
   }
 }
 
-class CasActifPageState extends State<CasActifPage> {
+class CasDecedePageState extends State<CasDecedePage> {
   List<charts.Series<Sales, int>> _seriesLineData;
   List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
     final data = [
       new TimeSeriesSales(new DateTime(2020, 06, 19), 2),
-      new TimeSeriesSales(new DateTime(2020, 06, 20), 5),
-      new TimeSeriesSales(new DateTime(2020, 06, 21), 8),
-      new TimeSeriesSales(new DateTime(2020, 06, 22), 10),
-      new TimeSeriesSales(new DateTime(2020, 06, 23), 13),
-      new TimeSeriesSales(new DateTime(2020, 06, 24), 16),
-      new TimeSeriesSales(new DateTime(2020, 06, 25), 16),
-      new TimeSeriesSales(new DateTime(2020, 06, 26), 17),
-      new TimeSeriesSales(new DateTime(2020, 06, 27), 19),
-      new TimeSeriesSales(new DateTime(2020, 06, 28), 20),
+      new TimeSeriesSales(new DateTime(2020, 06, 20), 3),
+      new TimeSeriesSales(new DateTime(2020, 06, 21), 2),
+      new TimeSeriesSales(new DateTime(2020, 06, 22), 5),
+      new TimeSeriesSales(new DateTime(2020, 06, 23), 1),
+      new TimeSeriesSales(new DateTime(2020, 06, 24), 0),
+      new TimeSeriesSales(new DateTime(2020, 06, 25), 3),
+      new TimeSeriesSales(new DateTime(2020, 06, 26), 1),
+      new TimeSeriesSales(new DateTime(2020, 06, 27), 6),
+      new TimeSeriesSales(new DateTime(2020, 06, 28), 9),
     ];
 
     return [
@@ -46,31 +41,9 @@ class CasActifPageState extends State<CasActifPage> {
     ];
   }
 
-  _generateData() {
-    var linesalesdata = [
-      new Sales(0, 12, new DateTime(2017, 9, 19)),
-      new Sales(1, 15, new DateTime(2017, 9, 20)),
-      new Sales(2, 23, new DateTime(2017, 9, 21)),
-      new Sales(3, 10, new DateTime(2017, 9, 22)),
-      new Sales(4, 20, new DateTime(2017, 9, 23)),
-      new Sales(5, 23, new DateTime(2017, 9, 24)),
-    ];
-    _seriesLineData.add(
-      charts.Series(
-        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xff990099)),
-        id: 'Corona',
-        data: linesalesdata,
-        domainFn: (Sales sales, _) => sales.yearval,
-        measureFn: (Sales sales, _) => sales.salesval,
-      ),
-    );
-  }
-
   initState() {
     super.initState();
     _seriesLineData = List<charts.Series<Sales, int>>();
-
-    _generateData();
   }
 
   int _current = 0;
@@ -115,7 +88,7 @@ class CasActifPageState extends State<CasActifPage> {
                               Align(
                                 alignment: Alignment(-0.8, -0.5),
                                 child: Text(
-                                  'Les cas guéris',
+                                  'Les cas décédés',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -130,7 +103,7 @@ class CasActifPageState extends State<CasActifPage> {
                               Align(
                                 alignment: Alignment(-0.85, -0.7),
                                 child: Text(
-                                  'Il y\'a 20 cas',
+                                  'Il y\'a 3 cas décédés',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 20,
@@ -183,7 +156,7 @@ class CasActifPageState extends State<CasActifPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          '  Les cas',
+                          '  Les décédés',
                           style: TextStyle(
                             color: Colors.black.withOpacity(0.5),
                             fontSize: 20,
@@ -236,27 +209,30 @@ class CasActifPageState extends State<CasActifPage> {
                         itemCount: imgList.length,
                       ),
                     ),
-                    Stack(
+                    Column(
                       children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 10,
+                            right: 190,
+                            bottom: 10,
+                          ),
+                          child: Text(
+                            'Statistiques',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
                         Center(
                           child: Container(
-                              //  color: Colors.blue,
-                              height: 600,
+                              color: Colors.white,
+                              height: 400,
                               width: width * 0.9,
                               child:
                                   SimpleTimeSeriesChart(_createSampleData())),
-                        ),
-                        Positioned(
-                          left: 150.0,
-                          top: 180.0,
-                          child: Text(
-                            '20 cas',
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
                         ),
                       ],
                     ),
