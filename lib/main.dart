@@ -5,6 +5,7 @@ import 'package:iSOLVIT/MenuPage.dart';
 import 'package:iSOLVIT/test.dart';
 
 import 'AddCasePage.dart';
+import 'GeneralStatistics.dart';
 import 'LoginPage.dart';
 import 'LunchPage.dart';
 import 'LunchPage.dart';
@@ -17,7 +18,7 @@ void main() {
   runApp(
     new MaterialApp(
       title: "iSOLVIT",
-      home: AddCasePage(),
+      home: GeneralStatisticsPage(),
     ),
   );
 }
