@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'dart:async';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:iSOLVIT/GetStarted.dart';
+import 'package:iSOLVIT/test.dart';
 
 import 'AccueilPage.dart';
 import 'ChartWidget2.dart';
@@ -17,8 +20,57 @@ class CasActifPage extends StatefulWidget {
 }
 
 class CasActifPageState extends State<CasActifPage> {
+  List<charts.Series<Sales, int>> _seriesLineData;
+  List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
+    final data = [
+      new TimeSeriesSales(new DateTime(2020, 06, 19), 2),
+      new TimeSeriesSales(new DateTime(2020, 06, 20), 5),
+      new TimeSeriesSales(new DateTime(2020, 06, 21), 8),
+      new TimeSeriesSales(new DateTime(2020, 06, 22), 10),
+      new TimeSeriesSales(new DateTime(2020, 06, 23), 13),
+      new TimeSeriesSales(new DateTime(2020, 06, 24), 16),
+      new TimeSeriesSales(new DateTime(2020, 06, 25), 16),
+      new TimeSeriesSales(new DateTime(2020, 06, 26), 17),
+      new TimeSeriesSales(new DateTime(2020, 06, 27), 19),
+      new TimeSeriesSales(new DateTime(2020, 06, 28), 20),
+    ];
+
+    return [
+      new charts.Series<TimeSeriesSales, DateTime>(
+        id: 'Sales',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (TimeSeriesSales sales, _) => sales.time,
+        measureFn: (TimeSeriesSales sales, _) => sales.sales,
+        data: data,
+      )
+    ];
+  }
+
+  _generateData() {
+    var linesalesdata = [
+      new Sales(0, 12, new DateTime(2017, 9, 19)),
+      new Sales(1, 15, new DateTime(2017, 9, 20)),
+      new Sales(2, 23, new DateTime(2017, 9, 21)),
+      new Sales(3, 10, new DateTime(2017, 9, 22)),
+      new Sales(4, 20, new DateTime(2017, 9, 23)),
+      new Sales(5, 23, new DateTime(2017, 9, 24)),
+    ];
+    _seriesLineData.add(
+      charts.Series(
+        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xff990099)),
+        id: 'Corona',
+        data: linesalesdata,
+        domainFn: (Sales sales, _) => sales.yearval,
+        measureFn: (Sales sales, _) => sales.salesval,
+      ),
+    );
+  }
+
   initState() {
     super.initState();
+    _seriesLineData = List<charts.Series<Sales, int>>();
+
+    _generateData();
   }
 
   int _current = 0;
@@ -34,6 +86,7 @@ class CasActifPageState extends State<CasActifPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     // TODO: implement build
     return MaterialApp(
       home: SafeArea(
@@ -187,17 +240,17 @@ class CasActifPageState extends State<CasActifPage> {
                       children: <Widget>[
                         Center(
                           child: Container(
-                            //  color: Colors.blue,
-                            height: 600,
-                            width: width * 0.9,
-                            child: PieChartSample2(),
-                          ),
+                              //  color: Colors.blue,
+                              height: 600,
+                              width: width * 0.9,
+                              child:
+                                  SimpleTimeSeriesChart(_createSampleData())),
                         ),
                         Positioned(
                           left: 150.0,
                           top: 180.0,
                           child: Text(
-                            '79 cas',
+                            '20 cas',
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
                               fontSize: 20,
@@ -216,4 +269,12 @@ class CasActifPageState extends State<CasActifPage> {
       ),
     );
   }
+}
+
+class Sales {
+  int yearval;
+  int salesval;
+  DateTime time;
+
+  Sales(this.yearval, this.salesval, this.time);
 }

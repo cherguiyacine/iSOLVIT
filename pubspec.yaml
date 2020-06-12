@@ -31,6 +31,9 @@ dependencies:
   fluttertagselector: ^0.1.0
   fl_chart: ^0.10.0
   page_transition: "^1.1.5"
+  charts_common: ^0.8.1
+  charts_flutter: ^0.8.1
+  font_awesome_flutter: ^8.8.1
 
 dev_dependencies:
   flutter_test:

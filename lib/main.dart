@@ -3,6 +3,7 @@ import 'package:iSOLVIT/AccueilPage.dart';
 import 'package:iSOLVIT/GetStarted.dart';
 import 'package:iSOLVIT/MenuPage.dart';
 import 'package:iSOLVIT/test.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'AddCasePage.dart';
 import 'CasActifPage.dart';
@@ -19,7 +20,7 @@ void main() {
   runApp(
     new MaterialApp(
       title: "iSOLVIT",
-      home: CasActifPage(),
+      home: (CasActifPage()),
     ),
   );
 }
