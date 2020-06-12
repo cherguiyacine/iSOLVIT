@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'AccueilPage.dart';
 

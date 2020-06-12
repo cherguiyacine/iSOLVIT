@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertagselector/fluttertagselector.dart';
 import 'package:fluttertagselector/tag_class.dart';
 import 'package:iSOLVIT/MenuPage.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'ChartWidget.dart';
 
@@ -406,10 +407,14 @@ Widget CostumBar(height, width, context) {
           ),
           onTap: () {
             print('menu');
-            Navigator.push(
+            /* Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MenuPage()),
-            );
+            );*/
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.rotate, child: MenuPage()));
           },
         ),
       ),
