@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertagselector/fluttertagselector.dart';
 import 'package:fluttertagselector/tag_class.dart';
+import 'package:iSOLVIT/MenuPage.dart';
 
 import 'ChartWidget.dart';
 
@@ -51,7 +52,7 @@ class AccueilPageState extends State<AccueilPage> {
                   child: ListView(
                     scrollDirection: Axis.vertical,
                     children: <Widget>[
-                      CostumBar(height, width),
+                      CostumBar(height, width, context),
                       SizedBox(
                         height: 40.0,
                         //child: const Card(child: Text('Hello World!')),
@@ -325,7 +326,7 @@ class AccueilPageState extends State<AccueilPage> {
   }
 }
 
-Widget CostumBar(height, width) {
+Widget CostumBar(height, width, context) {
   return Row(
     children: <Widget>[
       Container(
@@ -405,6 +406,10 @@ Widget CostumBar(height, width) {
           ),
           onTap: () {
             print('menu');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MenuPage()),
+            );
           },
         ),
       ),
