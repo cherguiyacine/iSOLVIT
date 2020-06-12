@@ -6,10 +6,10 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:iSOLVIT/GetStarted.dart';
-import 'package:iSOLVIT/test.dart';
 
 import 'AccueilPage.dart';
 import 'ChartWidget2.dart';
+import 'SimpleTieSeriesChart.dart';
 
 class CasActifPage extends StatefulWidget {
   @override
