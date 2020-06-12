@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
+import 'package:iSOLVIT/LoginPage.dart';
+
+import 'AccueilPage.dart';
 
 class GetStarted extends StatefulWidget {
   @override
@@ -25,15 +28,19 @@ class GetStartedState extends State<GetStarted> with TickerProviderStateMixin {
       body: OverBoard(
         pages: pages,
         showBullets: true,
+        finishText: "COMMENCER",
+        nextText: "SUIVANT",
+        skipText: "RETOUR",
         skipCallback: () {
           _globalKey.currentState.showSnackBar(SnackBar(
             content: Text("Skip clicked"),
           ));
         },
         finishCallback: () {
-          _globalKey.currentState.showSnackBar(SnackBar(
-            content: Text("Finish clicked"),
-          ));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LoginPage()),
+          );
         },
       ),
     );

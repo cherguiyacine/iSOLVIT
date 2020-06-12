@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'AccueilPage.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -164,6 +166,11 @@ class _LoginPageState extends State<LoginPage> {
                           print("Centre de travail : " + centre);
                           print(
                               "Rester connecté : " + resterConnecte.toString());
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AccueilPage()),
+                          );
                         }),
                   ),
                 ],

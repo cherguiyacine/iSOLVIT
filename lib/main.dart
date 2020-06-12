@@ -16,7 +16,7 @@ void main() {
   runApp(
     new MaterialApp(
       title: "iSOLVIT",
-      home: MenuPage(),
+      home: LunchPage(),
     ),
   );
 }

@@ -58,10 +58,15 @@ class MenuPageState extends State<MenuPage> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20, left: 230),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 40.0,
+                      child: InkWell(
+                        child: Icon(
+                          Icons.close,
+                          color: Colors.white,
+                          size: 40.0,
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
                     ),
                   ],
