@@ -10,6 +10,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 
+import 'AddCaseSuspectPage.dart';
 import 'CasActifPage.dart';
 import 'CasGueriePage.dart';
 import 'CostumButton.dart';
@@ -26,7 +27,7 @@ void main() {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: (AccueilPage()),
+      home: (AddCaseSuspectPage()),
     ),
   );
 }
