@@ -1,6 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:iSOLVIT/AccueilPage.dart';
+import 'package:progress_state_button/iconed_button.dart';
+import 'package:progress_state_button/progress_button.dart';
+
+import 'CostumButton.dart';
 
 class AddCasePage extends StatefulWidget {
   @override
@@ -252,23 +258,11 @@ class _AddCasePageState extends State<AddCasePage> {
                       SizedBox(
                         height: 20,
                       ),
+                      //ProgressButtonHomePage(),
+
                       Padding(
-                        padding: EdgeInsets.fromLTRB(90, 10, 90, 20),
-                        child: CupertinoButton(
-                            child: Text("Enregistrer",
-                                style: TextStyle(fontSize: 15)),
-                            padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                            pressedOpacity: 0.7,
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue[400],
-                            onPressed: () {
-                              print("Nom et prénom : " + controllerNom.text);
-                              print("Age : " + controllerAge.text);
-                              print(
-                                  "Lieu de résidence : " + controllerLieu.text);
-                              print("Etat : " + etat);
-                            }),
-                      )
+                          padding: EdgeInsets.fromLTRB(90, 10, 90, 20),
+                          child: buildTextWithIcon()),
                     ],
                   ),
                 ),
@@ -278,5 +272,109 @@ class _AddCasePageState extends State<AddCasePage> {
         ),
       ),
     );
+  }
+
+  void onPressedCustomButton() {
+    setState(() {
+      switch (stateOnlyText) {
+        case ButtonState.idle:
+          stateOnlyText = ButtonState.loading;
+          break;
+        case ButtonState.loading:
+          stateOnlyText = ButtonState.fail;
+          break;
+        case ButtonState.success:
+          stateOnlyText = ButtonState.idle;
+          break;
+        case ButtonState.fail:
+          stateOnlyText = ButtonState.success;
+          break;
+      }
+    });
+  }
+
+  void onPressedIconWithText() {
+    switch (stateTextWithIcon) {
+      case ButtonState.idle:
+        stateTextWithIcon = ButtonState.loading;
+
+        Future.delayed(Duration(seconds: 1), () {
+          setState(() {
+            stateTextWithIcon = Random.secure().nextBool()
+                ? ButtonState.success
+                : ButtonState.fail;
+          });
+        });
+
+        break;
+      case ButtonState.loading:
+        break;
+      case ButtonState.success:
+        stateTextWithIcon = ButtonState.idle;
+        break;
+      case ButtonState.fail:
+        stateTextWithIcon = ButtonState.idle;
+        break;
+    }
+    setState(() {
+      stateTextWithIcon = stateTextWithIcon;
+    });
+  }
+
+  ButtonState stateOnlyText = ButtonState.idle;
+  ButtonState stateTextWithIcon = ButtonState.idle;
+
+  Widget buildCustomButton() {
+    var progressTextButton = ProgressButton(
+      stateWidgets: {
+        ButtonState.idle: Text(
+          "Idle",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        ),
+        ButtonState.loading: Text(
+          "Loading",
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.w500),
+        ),
+        ButtonState.fail: Text(
+          "Fail",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        ),
+        ButtonState.success: Text(
+          "Success",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        )
+      },
+      stateColors: {
+        ButtonState.idle: Colors.blue.shade400,
+        ButtonState.loading: Colors.blue.shade300,
+        ButtonState.fail: Colors.red.shade300,
+        ButtonState.success: Colors.green.shade400,
+      },
+      onPressed: onPressedCustomButton,
+      state: stateOnlyText,
+      padding: EdgeInsets.all(8.0),
+    );
+    return progressTextButton;
+  }
+
+  Widget buildTextWithIcon() {
+    return ProgressButton.icon(iconedButtons: {
+      ButtonState.idle: IconedButton(
+          text: "Enregistrer",
+          icon: Icon(Icons.send, color: Colors.white),
+          color: Colors.blue),
+      ButtonState.loading: IconedButton(text: "Loading", color: Colors.blue),
+      ButtonState.fail: IconedButton(
+          text: "Success",
+          icon: Icon(Icons.check_circle, color: Colors.white),
+          color: Colors.green.shade400),
+      ButtonState.success: IconedButton(
+          text: "Success",
+          icon: Icon(
+            Icons.check_circle,
+            color: Colors.white,
+          ),
+          color: Colors.green.shade400)
+    }, onPressed: onPressedIconWithText, state: stateTextWithIcon);
   }
 }

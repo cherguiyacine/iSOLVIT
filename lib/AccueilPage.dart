@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertagselector/fluttertagselector.dart';
 import 'package:fluttertagselector/tag_class.dart';
+import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:iSOLVIT/GeneralStatistics.dart';
 import 'package:iSOLVIT/MenuPage.dart';
 import 'package:page_transition/page_transition.dart';
@@ -63,7 +64,7 @@ class AccueilPageState extends State<AccueilPage> {
                         //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
-                            width: 0.5 * width,
+                            width: 0.4 * width,
                             height: 70,
                             child: Column(
                               children: <Widget>[
@@ -97,11 +98,10 @@ class AccueilPageState extends State<AccueilPage> {
                             ),
                           ),
                           Container(
-                            width: 0.5 * width,
-                            // color: Colors.blueGrey,
+                            width: 0.6 * width,
+                            //color: Colors.blueGrey,
                             height: 70,
-                            child: TagGenrator(
-                                tagList: tagList, fillRandomColor: false),
+                            child: AddButton(context),
                           ),
                         ],
                       ),
@@ -344,6 +344,79 @@ class AccueilPageState extends State<AccueilPage> {
       ),
     );
   }
+}
+
+Widget AddButton(context) {
+  return InkWell(
+    child: Container(
+      //color: Colors.blueAccent,
+      child: Stack(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 40),
+            child: Container(
+              //    color: Colors.white,
+              height: 60,
+              width: 190,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      width: 3, color: Colors.white, style: BorderStyle.solid)),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 180),
+            child: Container(
+              //    color: Colors.white,
+              height: 60,
+              width: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(
+                    width: 3, color: Colors.white, style: BorderStyle.solid),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: new BorderRadius.circular(10.0),
+                child: Icon(
+                  Icons.add,
+                  size: 40,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 55, top: 18),
+            child: Text(
+              'Signaler Cas',
+              style: TextStyle(
+                color: Colors.black.withOpacity(0.5),
+                fontSize: 20,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+    onTap: () {
+      print('add');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AddCasePage()),
+      );
+    },
+  );
 }
 
 Widget CostumBar(height, width, context) {
