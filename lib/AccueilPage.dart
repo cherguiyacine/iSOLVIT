@@ -1,7 +1,5 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertagselector/fluttertagselector.dart';
 import 'package:fluttertagselector/tag_class.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:iSOLVIT/GeneralStatistics.dart';
@@ -13,7 +11,6 @@ import 'ChartWidget.dart';
 class AccueilPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return AccueilPageState();
   }
 }

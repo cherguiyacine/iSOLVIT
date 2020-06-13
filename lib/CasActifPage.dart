@@ -4,7 +4,6 @@ import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'AccueilPage.dart';
-import 'SimpleTieSeriesChart.dart';
 import 'TwoLinePage.dart';
 
 class CasActifPage extends StatefulWidget {

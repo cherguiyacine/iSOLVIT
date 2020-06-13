@@ -8,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iSOLVIT/GetStarted.dart';
 
 import 'AccueilPage.dart';
-import 'ChartWidget2.dart';
 import 'SimpleTieSeriesChart.dart';
 
 class CasGuerisPage extends StatefulWidget {

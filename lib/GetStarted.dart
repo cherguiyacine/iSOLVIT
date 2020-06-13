@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:iSOLVIT/LoginPage.dart';
 
-import 'AccueilPage.dart';
-
 class GetStarted extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

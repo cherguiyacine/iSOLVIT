@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:iSOLVIT/CasActifPage.dart';
 import 'package:iSOLVIT/CasDecede.dart';
-import 'dart:async';
-
-import 'package:iSOLVIT/GetStarted.dart';
-
 import 'AccueilPage.dart';
 import 'CasGueriePage.dart';
 import 'ChartWidget2.dart';

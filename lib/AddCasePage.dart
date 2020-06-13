@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:iSOLVIT/AccueilPage.dart';
+import 'package:iSOLVIT/AddCaseSuspectPage.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 
@@ -179,6 +180,12 @@ class _AddCasePageState extends State<AddCasePage> {
                                         btn2 = btn3 = Colors.white;
                                         txt2 = txt3 = Colors.grey[500];
                                       },
+                                    );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AddCaseSuspectPage()),
                                     );
                                   }),
                             ),
