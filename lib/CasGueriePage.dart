@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iSOLVIT/GetStarted.dart';
 
 import 'AccueilPage.dart';
+import 'ShowListActif.dart';
 import 'SimpleTieSeriesChart.dart';
 
 class CasGuerisPage extends StatefulWidget {
@@ -204,6 +205,11 @@ class CasGuerisPageState extends State<CasGuerisPage> {
                           ),
                           onTap: () {
                             print("Voir plus");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ShowListActifPage()),
+                            );
                           },
                         ),
                       ],
@@ -229,6 +235,11 @@ class CasGuerisPageState extends State<CasGuerisPage> {
                                 _current = index;
                               });
                               print(index);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShowListActifPage()),
+                              );
                             },
                           );
                         },

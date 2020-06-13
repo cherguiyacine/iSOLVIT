@@ -4,6 +4,7 @@ import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'AccueilPage.dart';
+import 'ShowListActif.dart';
 import 'SimpleTieSeriesChart.dart';
 
 class CasDecedePage extends StatefulWidget {
@@ -179,6 +180,11 @@ class CasDecedePageState extends State<CasDecedePage> {
                           ),
                           onTap: () {
                             print("Voir plus");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ShowListActifPage()),
+                            );
                           },
                         ),
                       ],
@@ -204,6 +210,11 @@ class CasDecedePageState extends State<CasDecedePage> {
                                 _current = index;
                               });
                               print(index);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShowListActifPage()),
+                              );
                             },
                           );
                         },

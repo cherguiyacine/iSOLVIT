@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:iSOLVIT/LunchPage.dart';
 
 import 'ShowListActif.dart';
 
@@ -16,7 +17,7 @@ void main() {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: (ShowListActifPage()),
+      home: (LunchPage()),
     ),
   );
 }

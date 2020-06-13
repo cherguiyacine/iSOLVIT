@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:iSOLVIT/ShowListActif.dart';
 
 import 'AccueilPage.dart';
 import 'TwoLinePage.dart';
@@ -201,6 +202,11 @@ class CasActifPageState extends State<CasActifPage> {
                           ),
                           onTap: () {
                             print("Voir plus");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ShowListActifPage()),
+                            );
                           },
                         ),
                       ],
@@ -226,6 +232,11 @@ class CasActifPageState extends State<CasActifPage> {
                                 _current = index;
                               });
                               print(index);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShowListActifPage()),
+                              );
                             },
                           );
                         },
