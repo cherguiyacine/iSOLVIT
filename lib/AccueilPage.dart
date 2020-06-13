@@ -366,7 +366,7 @@ Widget AddButton(context) {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 180),
+            padding: EdgeInsets.only(left: 160),
             child: Container(
               //    color: Colors.white,
               height: 60,
@@ -396,7 +396,7 @@ Widget AddButton(context) {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 55, top: 18),
+            padding: EdgeInsets.only(left: 44, top: 18),
             child: Text(
               'Signaler Cas',
               style: TextStyle(

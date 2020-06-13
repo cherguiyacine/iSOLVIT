@@ -235,9 +235,8 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                             child: PieChartSample2(),
                           ),
                         ),
-                        Positioned(
-                          left: 150.0,
-                          top: 180.0,
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(150, 180, 17, 10),
                           child: Text(
                             '79 cas',
                             style: TextStyle(

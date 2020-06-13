@@ -26,7 +26,7 @@ void main() {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: (LunchPage()),
+      home: (AccueilPage()),
     ),
   );
 }
