@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'AccueilPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
+
+final GoogleSignIn _googleSignIn = GoogleSignIn();
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class _LoginPageState extends State<LoginPage> {
   String centre = "Centre A";
@@ -166,6 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                           print("Centre de travail : " + centre);
                           print(
                               "Rester connecté : " + resterConnecte.toString());
+                          _gSignin();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -180,5 +188,13 @@ class _LoginPageState extends State<LoginPage> {
         ));
       },
     );
+  }
+
+  Future<FirebaseUser> _gSignin() async {
+    FirebaseUser user = await _auth
+        .signInWithEmailAndPassword(email: "YacineChergui31", password: "1234")
+        .then((user) {
+      print(user.displayName);
+    });
   }
 }

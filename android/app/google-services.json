@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "823327106405",
+    "firebase_url": "https://isolvit-project.firebaseio.com",
+    "project_id": "isolvit-project",
+    "storage_bucket": "isolvit-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823327106405:android:744eda89587021180fad8c",
+        "android_client_info": {
+          "package_name": "com.example.iSOLVIT"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823327106405-d1ot7qfdrfa72sl7ga0udvbt3qpj1ahg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.iSOLVIT",
+            "certificate_hash": "da49eeabaf26726995e33632f39c42baf35fe099"
+          }
+        },
+        {
+          "client_id": "823327106405-r3fsp3p4mff95ehk7p2po5ibeghglfe6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvgIzm-yg7zL4W8MQ5K60__L3oFuJjfRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823327106405-r3fsp3p4mff95ehk7p2po5ibeghglfe6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
