@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/LunchPage.dart';
 
+import 'AddCasePage.dart';
+import 'LoginPage.dart';
+import 'LunchPage.dart';
 import 'ShowListActif.dart';
 
 /*void main() => runApp(MaterialApp(

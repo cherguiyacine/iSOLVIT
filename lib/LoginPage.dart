@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
 import 'AccueilPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+//import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-final GoogleSignIn _googleSignIn = GoogleSignIn();
+//final GoogleSignIn _googleSignIn = GoogleSignIn();
+//final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class _LoginPageState extends State<LoginPage> {
@@ -97,8 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                   ]),
                   Padding(
                     padding: EdgeInsets.only(left: 16, right: 16, top: 5),
-                    child: TextField(
+                    child: TextFormField(
                       controller: controllerID,
+                      validator: (val) =>
+                          val.isEmpty ? "Entrer an email" : "Entrer an email",
                       decoration: InputDecoration(
                           filled: true, fillColor: Colors.grey[200]),
                     ),
@@ -167,18 +168,23 @@ class _LoginPageState extends State<LoginPage> {
                         pressedOpacity: 0.7,
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.blue[400],
-                        onPressed: () {
+                        onPressed: () async {
                           print("ID : " + controllerID.text);
                           print("Mot de passe : " + controllerPW.text);
                           print("Centre de travail : " + centre);
                           print(
                               "Rester connecté : " + resterConnecte.toString());
-                          _gSignin();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AccueilPage()),
-                          );
+                          //    _gSignin();
+                          //  register();
+                          login("isolvit@chu.dz", "hhhhhhhh1324");
+                          if (controllerID.text.isNotEmpty &&
+                              controllerPW.text.isNotEmpty) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AccueilPage()),
+                            );
+                          }
                         }),
                   ),
                 ],
@@ -189,12 +195,22 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
+}
 
-  Future<FirebaseUser> _gSignin() async {
-    FirebaseUser user = await _auth
-        .signInWithEmailAndPassword(email: "YacineChergui31", password: "1234")
-        .then((user) {
-      print(user.displayName);
-    });
+Future register() async {
+  try {
+    AuthResult result = await _auth.createUserWithEmailAndPassword(
+        email: "isolvit@chu.dz", password: "hhhhhhhh1324");
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
+Future login(String mail, String pwd) async {
+  try {
+    AuthResult result =
+        await _auth.signInWithEmailAndPassword(email: mail, password: pwd);
+  } catch (e) {
+    print(e.toString());
   }
 }

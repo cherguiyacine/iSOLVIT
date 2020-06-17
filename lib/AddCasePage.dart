@@ -6,6 +6,7 @@ import 'package:iSOLVIT/AccueilPage.dart';
 import 'package:iSOLVIT/AddCaseSuspectPage.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import 'CostumButton.dart';
 
@@ -14,12 +15,13 @@ class AddCasePage extends StatefulWidget {
   _AddCasePageState createState() => _AddCasePageState();
 }
 
+final FirebaseDatabase database = FirebaseDatabase.instance;
+
 class _AddCasePageState extends State<AddCasePage> {
   String etat = "";
   TextEditingController controllerNom = new TextEditingController();
   TextEditingController controllerAge = new TextEditingController();
   TextEditingController controllerLieu = new TextEditingController();
-
   Color btn1 = Colors.white;
   Color btn2 = Colors.white;
   Color btn3 = Colors.white;
@@ -282,6 +284,8 @@ class _AddCasePageState extends State<AddCasePage> {
   }
 
   void onPressedCustomButton() {
+    print("hey");
+
     setState(() {
       switch (stateOnlyText) {
         case ButtonState.idle:
@@ -301,6 +305,15 @@ class _AddCasePageState extends State<AddCasePage> {
   }
 
   void onPressedIconWithText() {
+    try {
+      database.reference().child("malade ${controllerNom.text} ").set({
+        "Firstneme": controllerNom.text,
+        "Age": controllerAge.text,
+        "Lieu": controllerLieu.text
+      });
+    } catch (e) {
+      print(e.toString());
+    }
     switch (stateTextWithIcon) {
       case ButtonState.idle:
         stateTextWithIcon = ButtonState.loading;
