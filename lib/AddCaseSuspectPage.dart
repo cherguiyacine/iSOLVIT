@@ -6,6 +6,8 @@ import 'package:iSOLVIT/AccueilPage.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 
+import 'DataClass.dart';
+
 class AddCaseSuspectPage extends StatefulWidget {
   @override
   _AddCaseSuspectPageState createState() => _AddCaseSuspectPageState();

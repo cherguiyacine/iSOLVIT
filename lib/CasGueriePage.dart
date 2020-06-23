@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
-import 'dart:async';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:iSOLVIT/GetStarted.dart';
+import 'package:provider/provider.dart';
 
 import 'AccueilPage.dart';
+import 'Counter.dart';
 import 'ShowListActif.dart';
 import 'SimpleTieSeriesChart.dart';
 
@@ -86,6 +84,7 @@ class CasGuerisPageState extends State<CasGuerisPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final bloc = Provider.of<Counter>(context);
 
     // TODO: implement build
     return MaterialApp(
@@ -130,7 +129,7 @@ class CasGuerisPageState extends State<CasGuerisPage> {
                               Align(
                                 alignment: Alignment(-0.85, -0.7),
                                 child: Text(
-                                  'Il y\'a 20 cas',
+                                  'Il y\'a ${bloc.nbGueris} cas',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 20,

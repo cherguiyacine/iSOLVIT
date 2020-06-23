@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:iSOLVIT/ShowListActif.dart';
+import 'package:provider/provider.dart';
 
 import 'AccueilPage.dart';
+import 'Counter.dart';
 import 'TwoLinePage.dart';
 
 class CasActifPage extends StatefulWidget {
@@ -83,6 +85,7 @@ class CasActifPageState extends State<CasActifPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final bloc = Provider.of<Counter>(context);
 
     // TODO: implement build
     return MaterialApp(
@@ -127,7 +130,7 @@ class CasActifPageState extends State<CasActifPage> {
                               Padding(
                                 padding: EdgeInsets.only(left: 2),
                                 child: Text(
-                                  'Il y\'a 11 cas suspects et 6 cas actifs',
+                                  'Il y\'a ${bloc.nbSuspect} cas suspects et ${bloc.nbPositif} cas actifs',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 15,
@@ -180,7 +183,7 @@ class CasActifPageState extends State<CasActifPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          '  Les décédés',
+                          '  Actifs',
                           style: TextStyle(
                             color: Colors.black.withOpacity(0.5),
                             fontSize: 20,

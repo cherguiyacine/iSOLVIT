@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertagselector/tag_class.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
+import 'package:iSOLVIT/DataClass.dart';
+import 'package:iSOLVIT/Counter.dart';
+
 import 'package:iSOLVIT/GeneralStatistics.dart';
 import 'package:iSOLVIT/MenuPage.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import 'ChartWidget.dart';
 
@@ -39,6 +45,8 @@ class AccueilPageState extends State<AccueilPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final bloc = Provider.of<Counter>(context);
+
     // TODO: implement build
     return MaterialApp(
       home: SafeArea(
@@ -83,7 +91,7 @@ class AccueilPageState extends State<AccueilPage> {
                                 Align(
                                   alignment: Alignment(-0.85, -0.7),
                                   child: Text(
-                                    'Il y\'a 79 cas',
+                                    'Il y\'a ${bloc.getSomme()} cas',
                                     style: TextStyle(
                                       color: Colors.black.withOpacity(0.5),
                                       fontSize: 20,
@@ -169,7 +177,6 @@ class AccueilPageState extends State<AccueilPage> {
                                     ],
                                   ),
                                   onTap: () {
-                                    print('Statistiques');
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -321,7 +328,7 @@ class AccueilPageState extends State<AccueilPage> {
                             left: 87.0,
                             top: 87.0,
                             child: Text(
-                              '79 cas',
+                              '${bloc.getSomme()} cas',
                               style: TextStyle(
                                 color: Colors.black.withOpacity(0.5),
                                 fontSize: 20,

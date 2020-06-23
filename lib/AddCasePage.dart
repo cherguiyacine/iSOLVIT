@@ -7,8 +7,11 @@ import 'package:iSOLVIT/AddCaseSuspectPage.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:provider/provider.dart';
 
 import 'CostumButton.dart';
+import 'Counter.dart';
+import 'DataClass.dart';
 
 class AddCasePage extends StatefulWidget {
   @override
@@ -33,6 +36,8 @@ class _AddCasePageState extends State<AddCasePage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final bloc = Provider.of<Counter>(context);
+
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -177,6 +182,7 @@ class _AddCasePageState extends State<AddCasePage> {
                                     etat = "Suspect";
                                     setState(
                                       () {
+                                        bloc.incSuspect();
                                         btn1 = Colors.orange[300];
                                         txt1 = Colors.white;
                                         btn2 = btn3 = Colors.white;
@@ -219,6 +225,8 @@ class _AddCasePageState extends State<AddCasePage> {
                                     etat = "Guéris";
                                     setState(
                                       () {
+                                        bloc.incGuiris();
+
                                         btn2 = Colors.green[300];
                                         txt2 = Colors.white;
                                         btn1 = btn3 = Colors.white;
@@ -255,6 +263,7 @@ class _AddCasePageState extends State<AddCasePage> {
                                     etat = "Décès";
                                     setState(
                                       () {
+                                        bloc.incDeces();
                                         btn3 = Colors.red[400];
                                         txt3 = Colors.white;
                                         btn1 = btn2 = Colors.white;

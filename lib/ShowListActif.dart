@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
+import 'package:provider/provider.dart';
 
 import 'AccueilPage.dart';
+import 'Counter.dart';
 
 class ShowListActifPage extends StatefulWidget {
   @override
@@ -20,7 +22,8 @@ class ShowListActifPageState extends State<ShowListActifPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // TODO: implement build
+    final bloc = Provider.of<Counter>(context);
+
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -63,7 +66,7 @@ class ShowListActifPageState extends State<ShowListActifPage> {
                               Align(
                                 alignment: Alignment(-0.85, -0.7),
                                 child: Text(
-                                  'Il y\'a 79 cas actifs',
+                                  'Il y\'a ${bloc.nbPositif} cas actifs',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 20,

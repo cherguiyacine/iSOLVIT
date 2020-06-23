@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:provider/provider.dart';
 
 import 'AccueilPage.dart';
+import 'Counter.dart';
 import 'ShowListActif.dart';
 import 'SimpleTieSeriesChart.dart';
 
@@ -60,6 +62,7 @@ class CasDecedePageState extends State<CasDecedePage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final bloc = Provider.of<Counter>(context);
 
     // TODO: implement build
     return MaterialApp(
@@ -105,7 +108,7 @@ class CasDecedePageState extends State<CasDecedePage> {
                               Align(
                                 alignment: Alignment(-0.85, -0.7),
                                 child: Text(
-                                  'Il y\'a 3 cas décédés',
+                                  'Il y\'a ${bloc.nbDeces} cas décédés',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 20,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AccueilPage.dart';
 
+import 'DataClass.dart';
 import 'GeneralStatistics.dart';
 
 class MenuPage extends StatefulWidget {

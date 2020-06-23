@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:iSOLVIT/AddCasePage.dart';
 import 'package:iSOLVIT/CasActifPage.dart';
 import 'package:iSOLVIT/CasDecede.dart';
+import 'package:iSOLVIT/DataClass.dart';
+import 'package:provider/provider.dart';
 import 'AccueilPage.dart';
 import 'CasGueriePage.dart';
 import 'ChartWidget2.dart';
+import 'Counter.dart';
 
 class GeneralStatisticsPage extends StatefulWidget {
   @override
@@ -24,6 +27,8 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final bloc = Provider.of<Counter>(context);
+
     // TODO: implement build
     return MaterialApp(
       home: SafeArea(
@@ -67,7 +72,7 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                               Align(
                                 alignment: Alignment(-0.85, -0.7),
                                 child: Text(
-                                  'Il y\'a 79 cas',
+                                  'Il y\'a ${bloc.getSomme()} cas',
                                   style: TextStyle(
                                     color: Colors.black.withOpacity(0.5),
                                     fontSize: 20,
@@ -234,7 +239,7 @@ class GeneralStatisticsPageState extends State<GeneralStatisticsPage> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(150, 180, 17, 10),
                           child: Text(
-                            '79 cas',
+                            '${bloc.getSomme()} cas',
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
                               fontSize: 20,

@@ -1,5 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'Counter.dart';
 
 int cpt;
 
@@ -13,6 +16,8 @@ class PieChart2State extends State {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of<Counter>(context);
+
     return AspectRatio(
       aspectRatio: 1.3,
       child: Card(
@@ -79,7 +84,7 @@ class PieChart2State extends State {
                     Padding(
                       padding: EdgeInsets.only(top: 0, left: 85),
                       child: Text(
-                        '35 cas',
+                        '${bloc.nbSuspect} cas',
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.5),
                           fontSize: 20,
@@ -105,7 +110,7 @@ class PieChart2State extends State {
                     Padding(
                       padding: EdgeInsets.only(top: 0, left: 100),
                       child: Text(
-                        '12 cas',
+                        '${bloc.nbPositif} cas',
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.5),
                           fontSize: 20,
@@ -131,7 +136,7 @@ class PieChart2State extends State {
                     Padding(
                       padding: EdgeInsets.only(top: 0, left: 100),
                       child: Text(
-                        '20 cas',
+                        '${bloc.nbGueris} cas',
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.5),
                           fontSize: 20,
@@ -157,7 +162,7 @@ class PieChart2State extends State {
                     Padding(
                       padding: EdgeInsets.only(top: 0, left: 104),
                       child: Text(
-                        '12 cas',
+                        '${bloc.nbDeces} cas',
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.5),
                           fontSize: 20,
