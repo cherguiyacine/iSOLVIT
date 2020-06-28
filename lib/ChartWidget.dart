@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:iSOLVIT/ChartWidget2.dart';
 
-import 'DataClass.dart';
 import 'GeneralStatistics.dart';
 
 int cpt;

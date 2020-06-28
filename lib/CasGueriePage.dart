@@ -19,7 +19,7 @@ class CasGuerisPage extends StatefulWidget {
 
 class CasGuerisPageState extends State<CasGuerisPage> {
   List<charts.Series<Sales, int>> _seriesLineData;
-  List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
+  List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData(bloc) {
     final data = [
       new TimeSeriesSales(new DateTime(2020, 06, 19), 2),
       new TimeSeriesSales(new DateTime(2020, 06, 20), 5),
@@ -30,7 +30,7 @@ class CasGuerisPageState extends State<CasGuerisPage> {
       new TimeSeriesSales(new DateTime(2020, 06, 25), 16),
       new TimeSeriesSales(new DateTime(2020, 06, 26), 17),
       new TimeSeriesSales(new DateTime(2020, 06, 27), 19),
-      new TimeSeriesSales(new DateTime(2020, 06, 28), 20),
+      new TimeSeriesSales(new DateTime(2020, 06, 28), bloc.nbGueris),
     ];
 
     return [
@@ -267,8 +267,8 @@ class CasGuerisPageState extends State<CasGuerisPage> {
                               color: Colors.white,
                               height: 400,
                               width: width * 0.9,
-                              child:
-                                  SimpleTimeSeriesChart(_createSampleData())),
+                              child: SimpleTimeSeriesChart(
+                                  _createSampleData(bloc))),
                         ),
                       ],
                     ),

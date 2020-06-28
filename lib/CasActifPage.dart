@@ -19,26 +19,31 @@ class CasActifPage extends StatefulWidget {
 
 class CasActifPageState extends State<CasActifPage> {
   List<charts.Series<TimeSeriesSales, int>> _seriesLineData;
-  static List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
+
+  static List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData(
+      bloc) {
     final desktopSalesData = [
-      new TimeSeriesSales(new DateTime(2017, 9, 19), 5),
-      new TimeSeriesSales(new DateTime(2017, 9, 26), 25),
-      new TimeSeriesSales(new DateTime(2017, 10, 3), 100),
-      new TimeSeriesSales(new DateTime(2017, 10, 10), 75),
+      new TimeSeriesSales(new DateTime(2020, 9, 19), 5),
+      new TimeSeriesSales(new DateTime(2020, 9, 26), 9),
+      new TimeSeriesSales(new DateTime(2020, 10, 3), 14),
+      new TimeSeriesSales(new DateTime(2020, 10, 10), 16),
+      new TimeSeriesSales(new DateTime(2020, 10, 11), bloc.nbSuspect),
     ];
 
     final tableSalesData = [
-      new TimeSeriesSales(new DateTime(2017, 9, 19), 10),
-      new TimeSeriesSales(new DateTime(2017, 9, 26), 50),
-      new TimeSeriesSales(new DateTime(2017, 10, 3), 200),
-      new TimeSeriesSales(new DateTime(2017, 10, 10), 150),
+      new TimeSeriesSales(new DateTime(2020, 9, 19), 3),
+      new TimeSeriesSales(new DateTime(2020, 9, 26), 1),
+      new TimeSeriesSales(new DateTime(2020, 10, 3), 5),
+      new TimeSeriesSales(new DateTime(2020, 10, 10), 19),
+      new TimeSeriesSales(new DateTime(2020, 10, 11), bloc.nbPositif),
     ];
 
     final mobileSalesData = [
-      new TimeSeriesSales(new DateTime(2017, 9, 19), 10),
-      new TimeSeriesSales(new DateTime(2017, 9, 26), 50),
-      new TimeSeriesSales(new DateTime(2017, 10, 3), 200),
-      new TimeSeriesSales(new DateTime(2017, 10, 10), 150),
+      new TimeSeriesSales(new DateTime(2020, 9, 19), 3),
+      new TimeSeriesSales(new DateTime(2020, 9, 26), 1),
+      new TimeSeriesSales(new DateTime(2020, 10, 3), 5),
+      new TimeSeriesSales(new DateTime(2020, 10, 10), 19),
+      new TimeSeriesSales(new DateTime(2020, 10, 11), bloc.nbPositif),
     ];
 
     return [
@@ -269,7 +274,7 @@ class CasActifPageState extends State<CasActifPage> {
                               height: 400,
                               width: width * 0.9,
                               child: DateTimeComboLinePointChart(
-                                  _createSampleData())),
+                                  _createSampleData(bloc))),
                         ),
                         Center(
                           child: Container(

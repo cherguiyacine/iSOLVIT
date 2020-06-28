@@ -9,9 +9,7 @@ import 'package:progress_state_button/progress_button.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:provider/provider.dart';
 
-import 'CostumButton.dart';
 import 'Counter.dart';
-import 'DataClass.dart';
 
 class AddCasePage extends StatefulWidget {
   @override
