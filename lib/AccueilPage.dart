@@ -30,12 +30,12 @@ class AccueilPageState extends State<AccueilPage> {
 
   int _current = 0;
   List<String> imgList = [
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
+    "images/1012.png",
+    "images/1216.png",
+    "images/512.png",
+    "images/1012.png",
+    "images/1216.png",
+    "images/512.png",
   ];
   final List<Tags> tagList = [
     Tags("Signaler Cas", Icons.add),

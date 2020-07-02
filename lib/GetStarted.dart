@@ -48,20 +48,20 @@ class GetStartedState extends State<GetStarted> with TickerProviderStateMixin {
     PageModel(
         color: const Color(0xfff0DBBD6),
         imageAssetPath: 'images/test2.png',
-        title: 'Get started',
-        body: 'Share your ideas with the team Share your ideas',
+        title: 'C est parti',
+        body: 'Naviguer sur l application avec toute rapidité',
         doAnimateImage: true),
     PageModel(
         color: const Color(0xfff11A0B6),
         imageAssetPath: 'images/test3.png',
-        title: 'Screen 2',
-        body: 'Connect with the people from different places',
+        title: 'Ajouter un Cas',
+        body: 'Ajouter des cas facilement',
         doAnimateImage: true),
     PageModel(
         color: const Color(0xfff157DE6),
         imageAssetPath: 'images/tets.png',
-        title: 'Screen 3',
-        body: 'A conceptual design for on boarding screens for mobile apps',
+        title: 'Visualiser',
+        body: 'Avoir des informations avec une visibilité parfaite',
         doAnimateImage: true),
   ];
 }

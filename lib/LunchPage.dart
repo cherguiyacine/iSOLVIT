@@ -19,7 +19,7 @@ class LunchPageState extends State<LunchPage> {
   }
 
   startSplashScreen() async {
-    var duration = const Duration(seconds: 10);
+    var duration = const Duration(seconds: 5);
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
@@ -41,7 +41,7 @@ class LunchPageState extends State<LunchPage> {
           new Container(
             decoration: new BoxDecoration(
                 image: new DecorationImage(
-              image: new AssetImage("images/start1.PNG"),
+              image: new AssetImage("images/start2.PNG"),
               fit: BoxFit.fill,
             )),
           ),

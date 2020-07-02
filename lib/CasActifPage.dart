@@ -79,12 +79,12 @@ class CasActifPageState extends State<CasActifPage> {
 
   int _current = 0;
   List<String> imgList = [
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
-    "images/malade1.png",
+    "images/1012.png",
+    "images/1216.png",
+    "images/512.png",
+    "images/1012.png",
+    "images/1216.png",
+    "images/512.png",
   ];
   @override
   Widget build(BuildContext context) {

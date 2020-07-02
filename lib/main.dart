@@ -20,7 +20,7 @@ void main() {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: (AccueilPage()),
+        home: (LunchPage()),
       ),
     ),
   );
